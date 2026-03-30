@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comenzar Sin Quemarse</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400 ;600;700&family=Lato:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Lato',sans-serif;background:linear-gradient(135deg,#EFE8DD,#D9C9B5);min-height:100vh;padding:40px 20px;display:flex;justify-content:center;align-items:flex-start;}
+.wrap{max-width:1100px;width:100%;background:white;border-radius:24px;box-shadow:0 20px 60px rgba(58,42,28,.15);overflow:hidden;}
+
+/* HEADER */
+.hdr{background:linear-gradient(135deg,#D4521E 0%,#C9906A 60%,#6B9960 100%);color:white;padding:60px 40px;text-align:center;position:relative;overflow:hidden;}
+.hdr::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(255,255,255,.08) 1px,transparent 1px);background-size:20px 20px;}
+.hdr-badge{display:inline-block;background:rgba(255,255,255,.22);padding:8px 20px;border-radius:50px;font-size:.85rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:20px;border:1px solid rgba(255,255,255,.35);color:white;position:relative;z-index:1;}
+.hdr h1{font-family:'Playfair Display',serif;font-size:3.2rem;font-weight:700;color:white;margin-bottom:10px;line-height:1.1;text-shadow:0 2px 6px rgba(0,0,0,.15);position:relative;z-index:1;}
+.hdr .sub{font-size:1.2rem;font-weight:300;color:white;opacity:.95;max-width:600px;margin:0 auto;position:relative;z-index:1;}
+
+/* CONTENT */
+.cnt{padding:50px 40px;}
+.sec{margin-bottom:50px;}
+.sec-ttl{font-family:'Playfair Display',serif;font-size:1.7rem;color:#3A3530;margin-bottom:22px;display:flex;align-items:center;gap:14px;}
+.ico{width:40px;height:40px;background:linear-gradient(135deg,#D4521E,#C9906A);border-radius:12px;display:flex;align-items:center;justify-content:center;color:white;font-size:1.1rem;flex-shrink:0;}
+
+/* WHY */
+.why-box{background:#FFF4EE;border-left:4px solid #E8834F;padding:22px;border-radius:0 12px 12px 0;margin-bottom:18px;}
+.why-box p{color:#7A3C1A;font-size:1rem;line-height:1.6;}
+.pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:16px;}
+.pain-item{background:white;padding:13px;border-radius:10px;border:1px solid #E0B898;display:flex;align-items:center;gap:8px;font-size:.92rem;color:#7A3C1A;}
+.pain-item::before{content:'•';color:#E8834F;font-size:1.4rem;font-weight:bold;}
+
+/* WHAT IS */
+.what-box{background:linear-gradient(135deg,#EEF5EB,#D9EDCF);padding:28px;border-radius:16px;}
+.what-box p.intro{color:#2C5220;font-size:1rem;font-weight:500;margin-bottom:16px;}
+.what-box ul{list-style:none;}
+.what-box li{padding:9px 0 9px 28px;position:relative;color:#2C5220;font-weight:500;}
+.what-box li::before{content:'✓';position:absolute;left:0;color:#6B9960;font-weight:bold;font-size:1.1rem;}
+.not-box{background:rgba(255,255,255,.6);padding:18px;border-radius:10px;margin-top:16px;border:2px dashed #8FB882;}
+.not-box strong{color:#6B9960;display:block;margin-bottom:8px;}
+.not-box p{color:#cc3300;margin-top:4px;}
+.not-box p.italic{color:#2C5220;font-style:italic;margin-top:9px;}
+
+/* FORMAT */
+.fmt-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:16px;}
+.fmt-card{background:#F5F0E8;padding:22px;border-radius:12px;border:1px solid #E0B898;text-align:center;}
+.fmt-card.hl{background:linear-gradient(135deg,#D4521E,#C9906A);color:white;border:none;}
+.fmt-card .num{font-size:2.3rem;font-weight:700;display:block;margin-bottom:4px;color:#D4521E;}
+.fmt-card.hl .num{color:white;}
+.fmt-card .lbl{font-size:.88rem;color:#4A4440;}
+.fmt-card.hl .lbl{color:white;}
+.tags-row{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px;justify-content:center;}
+.tag{background:#F0EBE3;padding:5px 14px;border-radius:20px;font-size:.82rem;color:#6B5F56;border:1px solid #D9C9B5;}
+
+/* BLOCKS */
+.blks{display:flex;flex-direction:column;gap:20px;}
+.blk{display:flex;gap:18px;align-items:flex-start;background:white;border:2px solid #E8DDD3;border-radius:16px;padding:22px;transition:all .3s;}
+.blk:hover{border-color:#D4521E;transform:translateX(6px);box-shadow:0 8px 25px rgba(212,82,30,.1);}
+.blk-num{flex-shrink:0;width:48px;height:48px;background:linear-gradient(135deg,#D4521E,#C9906A);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:1.2rem;box-shadow:0 4px 14px rgba(212,82,30,.3);}
+.blk-body{flex:1;padding-top:4px;}
+.blk-ttl{font-weight:600;color:#3A3530;margin-bottom:7px;font-size:1.1rem;}
+.blk-desc{color:#6B5F56;font-size:.92rem;line-height:1.6;}
+.blk-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:9px;}
+.blk-tag{background:#F0EBE3;color:#D4521E;padding:3px 11px;border-radius:20px;font-size:.78rem;font-weight:500;}
+
+/* AUDIENCE */
+.aud-box{background:linear-gradient(135deg,#FFFAEE,#FFF0C2);padding:28px;border-radius:16px;border:2px solid #F0C850;}
+.aud-box p.intro{color:#7A5A10;font-weight:600;margin-bottom:8px;}
+.aud-box ul{list-style:none;margin-top:16px;}
+.aud-box li{padding:11px 0 11px 33px;position:relative;color:#7A5A10;font-weight:500;border-bottom:1px dashed #F0C850;}
+.aud-box li:last-child{border-bottom:none;}
+.aud-box li::before{content:'👤';position:absolute;left:0;font-size:1.1rem;}
+
+/* RESULTS */
+.res-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:13px;margin-top:16px;}
+.res-item{background:#EEF5EB;padding:18px;border-radius:10px;border-left:4px solid #6B9960;display:flex;align-items:center;gap:13px;color:#3A3530;}
+
+/* FACILITATOR */
+.fac{background:linear-gradient(135deg,#3A3530,#5A4A3F);color:white;padding:36px;border-radius:16px;display:flex;gap:26px;align-items:center;flex-wrap:wrap;}
+.fac img{width:90px;height:90px;border-radius:50%;object-fit:cover;flex-shrink:0;border:4px solid rgba(255,255,255,.2);}
+.fac h3{font-family:'Playfair Display',serif;font-size:1.7rem;margin-bottom:9px;color:white;}
+.fac-role{color:#C0A898;font-size:.88rem;margin-bottom:0;}
+
+/* QUOTE */
+.quote{background:linear-gradient(135deg,#D4521E,#C9906A);color:white;padding:38px;text-align:center;border-radius:16px;position:relative;overflow:hidden;}
+.quote::before{content:'"';position:absolute;top:-20px;left:18px;font-size:7rem;opacity:.1;font-family:'Playfair Display',serif;}
+.quote p{font-family:'Playfair Display',serif;font-size:1.4rem;line-height:1.4;color:white;position:relative;z-index:1;}
+
+/* BOOK */
+.book-sec{background:#FDF6EE;padding:50px 40px;border-top:1px solid #E8DDD0;}
+.book-card{background:white;border-radius:20px;padding:32px;display:flex;gap:32px;align-items:center;flex-wrap:wrap;box-shadow:0 8px 30px rgba(58,42,28,.1);border:1px solid #E8DDD0;position:relative;overflow:hidden;}
+.book-card::before{content:'';position:absolute;top:0;left:0;width:6px;height:100%;background:linear-gradient(to bottom,#D4521E,#C9906A);border-radius:20px 0 0 20px;}
+.book-cover{flex-shrink:0;padding-left:10px;}
+.book-cover img{width:150px;height:auto;border-radius:8px;box-shadow:4px 6px 20px rgba(58,42,28,.25);display:block;}
+.book-info{flex:1;min-width:220px;}
+.book-meta{display:inline-block;background:linear-gradient(135deg,#D4521E,#C9906A);color:white;padding:5px 13px;border-radius:20px;font-size:.76rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:13px;}
+.book-title{font-family:'Playfair Display',serif;font-size:1.55rem;color:#3A3530;margin-bottom:3px;line-height:1.2;}
+.book-author{font-size:.93rem;color:#6B5F56;margin-bottom:15px;}
+.book-meta-row{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin-bottom:18px;}
+.book-price{font-size:1.8rem;font-weight:700;color:#D4521E;line-height:1;}
+.book-format{background:#F0EBE3;padding:5px 11px;border-radius:20px;font-size:.8rem;color:#6B5F56;font-weight:500;}
+.book-date{background:#EEF5EB;padding:5px 11px;border-radius:20px;font-size:.8rem;color:#6B9960;font-weight:600;}
+.book-cta{display:inline-flex;align-items:center;gap:9px;background:linear-gradient(135deg,#D4521E,#C9906A);color:white;padding:13px 26px;border-radius:50px;font-weight:600;font-size:.97rem;text-decoration:none;box-shadow:0 4px 15px rgba(212,82,30,.3);margin-bottom:12px;}
+.book-note{display:flex;align-items:center;gap:6px;margin-top:11px;font-size:.8rem;color:#6B5F56;}
+.book-note::before{content:'';width:8px;height:8px;background:#6B9960;border-radius:50%;flex-shrink:0;}
+
+/* CTA */
+.cta{background:#3A3530;color:white;padding:50px 40px;text-align:center;}
+.cta-badge{display:inline-block;background:rgba(255,255,255,.1);padding:8px 20px;border-radius:50px;font-size:.85rem;margin-bottom:20px;border:1px solid rgba(255,255,255,.2);color:white;}
+.cta h2{font-family:'Playfair Display',serif;font-size:1.9rem;margin-bottom:28px;color:white;}
+.cta-foot{margin-top:18px;font-size:.88rem;opacity:.7;color:white;}
+.cta-date{margin-top:14px;display:inline-block;background:linear-gradient(135deg,#D4521E,#C9906A);color:white;padding:10px 26px;border-radius:50px;font-size:.97rem;font-weight:600;}
+
+/* BOTÓN DE COMPRA STRIPE */
+.cta-buy-btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#00D4AA,#00B894);color:white;padding:16px 36px;border-radius:50px;font-weight:700;font-size:1.1rem;text-decoration:none;box-shadow:0 6px 20px rgba(0,212,170,.4);margin-top:24px;transition:all .3s ease;border:none;cursor:pointer;}
+.cta-buy-btn:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,212,170,.5);background:linear-gradient(135deg,#00E6B8,#00D4AA);}
+.cta-buy-btn::before{content:'🛒';font-size:1.2rem;}
+.cta-price{display:block;font-size:.85rem;font-weight:500;opacity:.9;margin-top:4px;}
+
+/* RESPONSIVE */
+@media(max-width:700px){
+  .hdr h1{font-size:2.1rem;}
+  .cnt{padding:28px 18px;}
+  .fmt-grid{grid-template-columns:1fr;}
+  .fac{flex-direction:column;text-align:center;}
+  .blk{flex-direction:column;}
+  .blk-num{margin:0 auto;}
+  .book-card{flex-direction:column;align-items:center;text-align:center;}
+  .book-meta-row{justify-content:center;}
+  body{padding:0;}
+  .wrap{border-radius:0;}
+  .hdr{padding:40px 20px;}
+  .cta{padding:36px 20px;}
+  .cta-buy-btn{padding:14px 28px;font-size:1rem;}
+}
+@media(max-width:480px){
+  .hdr h1{font-size:1.7rem;}
+  .sec-ttl{font-size:1.35rem;}
+}
+</style>
+<base target="_blank">
+</head>
+<body>
+<div class="wrap">
+
+  <!-- HEADER -->
+  <div class="hdr">
+    <div class="hdr-badge">Programa de Acompañamiento</div>
+    <h1>Comenzar Sin Quemarse</h1>
+    <p class="sub">Acompañamiento para veterinarios en los primeros años de profesión</p>
+  </div>
+
+  <div class="cnt">
+
+    <!-- POR QUÉ -->
+    <div class="sec">
+      <h2 class="sec-ttl"><div class="ico">🎯</div>¿Por qué nace este programa?</h2>
+      <div class="why-box">
+        <p>Los primeros años en veterinaria suelen venir acompañados de inseguridad, miedo a equivocarse y sobrecarga emocional. Aunque la formación técnica es sólida, la parte emocional y profesional del ejercicio clínico rara vez se acompaña.</p>
+        <p style="margin-top:12px;color:#9B3A18;font-weight:600;">Este programa nace para sostener ese inicio profesional de forma más consciente, humana y sostenible.</p>
+      </div>
+      <div class="pain-grid">
+        <div class="pain-item">Inseguridad profesional</div>
+        <div class="pain-item">Miedo a equivocarse</div>
+        <div class="pain-item">Sobrecarga emocional</div>
+        <div class="pain-item">Dificultad para poner límites</div>
+        <div class="pain-item">Sensación de no estar preparado</div>
+      </div>
+    </div>
+
+    <!-- QUÉ ES -->
+    <div class="sec">
+      <h2 class="sec-ttl"><div class="ico">💡</div>¿Qué es "Comenzar Sin Quemarse"?</h2>
+      <div class="what-box">
+        <p class="intro">Un espacio grupal de acompañamiento profesional donde poder:</p>
+        <ul>
+          <li>Poner palabras a lo que ocurre al empezar</li>
+          <li>Ordenar experiencias clínicas</li>
+          <li>Comprender los patrones emocionales del ejercicio veterinario</li>
+          <li>Desarrollar criterio profesional propio</li>
+        </ul>
+        <div class="not-box">
+          <strong>¿Qué NO es?</strong>
+          <p>✗ No es un curso técnico</p>
+          <p>✗ No es terapia</p>
+          <p class="italic">Es acompañamiento profesional desde la experiencia clínica y la mirada sistémica.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FORMATO -->
+    <div class="sec">
+      <h2 class="sec-ttl"><div class="ico">📋</div>Formato del Programa</h2>
+      <div class="fmt-grid">
+        <div class="fmt-card"><span class="num">8</span><span class="lbl">Semanas de duración</span></div>
+        <div class="fmt-card hl"><span class="num">15-20</span><span class="lbl">Participantes máximo</span></div>
+        <div class="fmt-card" style="grid-column:1/-1;">
+          <span class="lbl" style="font-size:1rem;font-weight:600;color:#3A3530;">💻 Online en directo</span>
+          <div class="tags-row">
+            <span class="tag">Confidencial</span><span class="tag">Seguro</span><span class="tag">No evaluativo</span><span class="tag">Participativo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ESTRUCTURA -->
+    <div class="sec">
+      <h2 class="sec-ttl"><div class="ico">🗂️</div>Estructura del Programa</h2>
+      <div class="blks">
+        <div class="blk">
+          <div class="blk-num">1</div>
+          <div class="blk-body">
+            <div class="blk-ttl">Aterrizar en la profesión</div>
+            <div class="blk-desc">Revisar expectativas con las que se empieza, entender el impacto del inicio profesional, normalizar la sensación de inseguridad</div>
+          </div>
+        </div>
+        <div class="blk">
+          <div class="blk-num">2</div>
+          <div class="blk-body">
+            <div class="blk-ttl">Identidad profesional</div>
+            <div class="blk-desc">Diferenciar ser profesional de rendir, construir una identidad profesional propia, reducir la dependencia de validación externa</div>
+          </div>
+        </div>
+        <div class="blk">
+          <div class="blk-num">3</div>
+          <div class="blk-body">
+            <div class="blk-ttl">Gestión emocional en clínica</div>
+            <div class="blk-desc">Aprender a sostener situaciones habituales: guardias, errores clínicos, eutanasias, conflictos con clientes y carga emocional acumulada</div>
+            <div class="blk-tags"><span class="blk-tag">Guardias</span><span class="blk-tag">Errores</span><span class="blk-tag">Eutanasias</span></div>
+          </div>
+        </div>
+        <div class="blk">
+          <div class="blk-num">4</div>
+          <div class="blk-body">
+            <div class="blk-ttl">Límites, responsabilidad y culpa</div>
+            <div class="blk-desc">Explorar el exceso de responsabilidad, dificultad para poner límites y la culpa asociada al cuidado de animales y clientes</div>
+          </div>
+        </div>
+        <div class="blk">
+          <div class="blk-num">5</div>
+          <div class="blk-body">
+            <div class="blk-ttl">Comunicación y relaciones</div>
+            <div class="blk-desc">Mejorar la relación con clientes, compañeros y responsables. Aprender a pedir ayuda, sostener conversaciones difíciles y comunicarse con claridad</div>
+          </div>
+        </div>
+        <div class="blk">
+          <div class="blk-num">6</div>
+          <div class="blk-body">
+            <div class="blk-ttl">Ritmo, cansancio y autocuidado real</div>
+            <div class="blk-desc">Reconocer señales tempranas de desgaste, revisar el concepto de autocuidado y aplicar estrategias realistas dentro del trabajo clínico</div>
+          </div>
+        </div>
+        <div class="blk">
+          <div class="blk-num">7</div>
+          <div class="blk-body">
+            <div class="blk-ttl">Criterio y toma de decisiones</div>
+            <div class="blk-desc">Desarrollar criterio clínico propio, tomar decisiones con más calma y reducir decisiones basadas en miedo o autoexigencia</div>
+          </div>
+        </div>
+        <div class="blk">
+          <div class="blk-num">8</div>
+          <div class="blk-body">
+            <div class="blk-ttl">Integración y proyección</div>
+            <div class="blk-desc">Integrar aprendizajes del proceso, definir cómo continuar la práctica profesional y proyectar un ejercicio veterinario más sostenible</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PARA QUIÉN -->
+    <div class="sec">
+      <h2 class="sec-ttl"><div class="ico">👥</div>¿Para quién es?</h2>
+      <div class="aud-box">
+        <p class="intro">Veterinarios y veterinarias que:</p>
+        <ul>
+          <li>Están empezando su carrera</li>
+          <li>Tienen menos de 5 años de experiencia</li>
+          <li>Sienten inseguridad o desgaste</li>
+          <li>Quieren ejercer sin perderse a sí mismos</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- RESULTADOS -->
+    <div class="sec">
+      <h2 class="sec-ttl"><div class="ico">✨</div>Resultados Esperados</h2>
+      <div class="res-grid">
+        <div class="res-item"><span style="font-size:1.4rem;">📈</span><span>Mayor comprensión del inicio profesional</span></div>
+        <div class="res-item"><span style="font-size:1.4rem;">🧘</span><span>Reducción de la autoexigencia desadaptativa</span></div>
+        <div class="res-item"><span style="font-size:1.4rem;">💚</span><span>Mejor gestión emocional en clínica</span></div>
+        <div class="res-item"><span style="font-size:1.4rem;">🔍</span><span>Mayor claridad profesional</span></div>
+        <div class="res-item" style="grid-column:1/-1;justify-content:center;"><span style="font-size:1.4rem;">🌱</span><span>Ejercicio más sostenible</span></div>
+      </div>
+    </div>
+
+    <!-- FACILITADORA -->
+    <div class="sec">
+      <h2 class="sec-ttl"><div class="ico">👩‍⚕️</div>Quién Facilita</h2>
+      <div class="fac">
+  <img src="la jefa.jpeg" alt="Natacha Suárez Rodríguez">
+  <div>
+    <h3>Natacha Suárez Rodríguez</h3>
+     <div class="fac-role">Veterinaria Clínica • Formadora y Divulgadora</div> 
+       </div>
+      </div>
+    </div>
+
+    <!-- CITA -->
+    <div class="sec">
+      <div class="quote"><p>Empezar la profesión no debería implicar quemarse.</p></div>
+    </div>
+
+  </div><!-- /cnt -->
+
+  <!-- LIBRO -->
+<div class="book-sec">
+  <h2 class="sec-ttl">
+    <div class="ico">📖</div>
+    También disponible: el libro
+  </h2>
+
+  <div class="book-card">
+
+    <!-- PORTADA (SOLO UNA) -->
+    <div class="book-cover">
+      <img src="portada.png" alt="Portada Comenzar sin Quemarse">
+    </div>
+
+    <!-- INFO -->
+    <div class="book-info">
+      <div class="book-meta">eBook Kindle · KDP Select</div>
+
+      <div class="book-title">Comenzar sin Quemarse</div>
+
+      <div class="book-author">Natacha Suárez Rodríguez</div>
+
+      <div class="book-meta-row">
+        <div class="book-price">€9,99</div>
+        <div class="book-format">eBook Kindle</div>
+        <div class="book-date">📅 9 de abril de 2026</div>
+      </div>
+
+      <a href="https://www.amazon.es/dp/B0GT5D9CVR"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="book-cta">
+         Reservar en Amazon →
+      </a>
+
+      <div class="book-note">
+        Borrador de preventa · Disponible próximamente
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  <!-- CTA -->
+  <div class="cta">
+    <div class="cta-badge">Programa Online de 8 Semanas • Plazas Limitadas</div>
+    <h2>¿Listo para comenzar sin quemarte?</h2>
+    <div class="cta-foot">Grupo reducido • Espacio seguro y confidencial</div>
+    <div class="cta-date">📅 Inicio del primer grupo: 30 de abril de 2026</div>
+    <a href="https://book.stripe.com/dRm7sKdAE0P98Td1R3dZ60b" target="_blank" rel="noopener noreferrer" class="cta-buy-btn">Comprar Ahora<span class="cta-price">Reserva tu plaza</span></a>
+  </div>
+
+</div><!-- /wrap -->
+</body>
+</html>
